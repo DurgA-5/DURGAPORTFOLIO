@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Papugani Durga Prasad Portfolio</title>
+    <meta name="description" content="Portfolio of Papugani Durga Prasad, showcasing skills in AI, full-stack web development, and modern UI/UX design." />
+    <link rel="icon" href="PDP.jpeg" type="image/png" />
+    <meta name="author" content="Papugani Durga Prasad" />
+  <meta name="keywords" content="Certificates, AWS, Full-Stack, Deep Learning, Machine Learning" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); color: #fff; overflow-x: hidden; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.7); padding: 15px 50px;
+      position: fixed; width: 100%; top: 0; z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    .logo { font-size: 1.8em; font-weight: 700; color: #00f0ff; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      position: relative; color: #fff; text-decoration: none; font-weight: 500;
+      padding: 5px 0;
+      opacity: 0; animation: fadeInNav 0.6s forwards; transition: color 0.3s;
+    }
+    .nav-links a:nth-child(1) { animation-delay: 0.2s; }
+    .nav-links a:nth-child(2) { animation-delay: 0.4s; }
+
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 2px;
+      background: #00f0ff; transition: width 0.3s;
+    }
+    .nav-links a:hover { color: #00f0ff; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Dropdown Button */
+    .dropbtn {
+      background-color: transparent;
+      color: white;
+      padding: 5px 0;
+      font-size: 1em;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      position: relative;
+    }
+
+    .dropbtn::after {
+      content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 2px;
+      background: #00f0ff; transition: width 0.3s;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+      color: #00f0ff;
+    }
+    .dropbtn:hover::after {
+      width: 100%;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      animation: fadeInNav 0.6s forwards;
+      animation-delay: 0.6s;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0,0,0,0.95);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      right: 0;
+      top: 120%;
+      border: 1px solid #00f0ff;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      animation: none;
+      opacity: 1;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #2c5364;
+      color: #00f0ff;
+    }
+
+    /* Show the dropdown menu when 'show' class is added by JS */
+    .dropdown-content.show {
+      display: block;
+    }
+
+    .container {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 180px 100px 60px; min-height: 100vh; flex-wrap: wrap;
+    }
+    .about, .profile-image, .skills-section, .projects-section, .contact-section,
+    .education-section, .certificates-section, .achievements-section {
+      opacity: 0; transform: translateY(40px); transition: all 0.8s ease;
+    }
+    .reveal { opacity: 1; transform: translateY(0); }
+
+    /* Hero/About */
+    .about { flex: 1; max-width: 600px; }
+    .about h1 {
+      font-size: 3.5em; background: linear-gradient(45deg, #00f0ff, #00b4cc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+    }
+    .about h3 { font-size: 1.5em; color: #ddd; margin-bottom: 30px; }
+    .about p { font-size: 1.1em; line-height: 1.8; color: #ccc; margin-bottom: 30px; }
+    .cta-buttons { display: flex; gap: 20px; }
+
+    /* Section Styles */
+    section {
+      padding: 80px 50px;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
+      color: #ccc;
+      background: #12121e;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    section h2 {
+      font-size: 2.8em;
+      color: #00f0ff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    section ul {
+      list-style-type: disc;
+      padding-left: 40px;
+      font-size: 1.1em;
+      line-height: 1.7;
+    }
+
+    section ul li {
+      margin-bottom: 10px;
+    }
+
+    /* Specific Section Styles (if needed to override general section) */
+    .certificates-section {
+      padding: 80px 50px; background: #12121e; text-align: center;
+    }
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left; /* Adjust text alignment for cards if desired */
+    }
+
+    .certificate-card {
+      background: #1e1e2f;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      padding: 20px;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .certificate-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0,240,255,0.4);
+    }
+
+    .certificate-card .card-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0f2027;
+    }
+
+    .certificate-card .card-image img {
+        width: 100%;
+        height: auto; /* Changed from fixed height for better responsiveness */
+        object-fit: cover;
+        display: block;
+    }
+
+    .certificate-card h3 {
+      color: #00f0ff;
+      margin-bottom: 5px;
+    }
+
+    .certificate-card p {
+      color: #ccc;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .certificate-card .date {
+      font-size: 0.85em;
+      color: #aaa;
+      margin-top: auto;
+      padding-top: 10px;
+      text-align: right;
+    }
+
+    /* Back to Top Button Styling */
+    #backToTop {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #00f0ff;
+        color: #0f2027;
+        cursor: pointer;
+        padding: 15px 20px;
+        border-radius: 50%;
+        font-size: 18px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #backToTop:hover {
+        background-color: #00b4cc;
+        transform: translateY(-3px);
+    }
+
+    @keyframes fadeInNav { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes slideInLeft{ from{opacity:0;transform:translateX(-100px);} to{opacity:1;transform:translateX(0);} }
+    @keyframes slideInRight{ from{opacity:0;transform:translateX(100px);} to{opacity:1;transform:translateX(0);} }
+
+    @media(max-width:992px){
+      nav { padding: 15px 20px; } /* Adjust padding for smaller screens */
+      .nav-links{display: flex; justify-content: center; width: 100%; gap: 15px;}
+      nav::after{content:'';}
+      .dropdown-content {
+          right: auto;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+      section {
+        padding: 60px 30px;
+      }
+      .certificates-grid {grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:600px){
+      .certificates-grid {grid-template-columns:1fr;}
+    }
+
+    /* Footer Styling */
+    .footer {
+      background: #0a1118; /* Very dark background */
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9em;
+      border-top: 1px solid rgba(0,240,255,0.1); /* Subtle top border */
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .footer-content p {
+      margin-bottom: 10px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="gradient-overlay"></div>
+
+  <button id="backToTop" title="Back to Top">↑</button>
+
+  <nav>
+    <a href="INDEX.HTML" class="logo">DURGA PRASAD PAPUGANI</a>
+    <div class="nav-links">
+      <a href="INDEX.HTML#home">Home</a>
+      <a href="INDEX.HTML#contact">Contact</a>
+      <div class="dropdown">
+        <button class="dropbtn">More <i class="fas fa-caret-down"></i></button>
+        <div class="dropdown-content">
+          <a href="INDEX.HTML#skills">Skills</a>
+          <a href="INDEX.HTML#education">Education</a>
+          <a href="INDEX.HTML#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+          <a href="INDEX.HTML#achievements">Achievements</a>
+          <a href="INDEX.HTML#interships">Internships</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="certificates-section reveal" id="certificates" style="padding-top: 150px;">
+    <h2>ALL CERTIFICATIONS</h2>
+    <div class="certificates-grid">
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="reliancepython.png" alt="Python" />
+        </div>
+        <h3>Python for Data Science</h3>
+        <p><strong>Reliance Foundation</strong></p>
+        <p>Completed comprehensive training in data analysis, visualization, and machine learning using Python.</p>
+        <p class="date"><strong>Issued:</strong> January 2025</p>
+      </div> 
+      
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="nasscom.png" alt="NASSCOM Digital 101 Certificate" />
+        </div>
+        <h3>Digital 101</h3>
+          <p><strong>Issuer:</strong> NASSCOM – FutureSkills Prime</p>
+            <p>Gained foundational understanding of digital technologies, including cloud, AI, cybersecurity, and data analytics.</p>
+            <p class="date"><strong>Issued:</strong> December 2024</p>
+      </div>
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="dti.png" alt="ML Engineer Certificate" />
+        </div>
+        <h3>Machine Learning Engineer Nanodegree</h3>
+        <p>Udacity</p>
+        <p>Developed expertise in machine learning algorithms, model deployment, and data science best practices.</p>
+        <p class="date">Issued: June 2024</p>
+      </div>
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="devops.png" alt="Python Certificate" />
+        </div>
+        <h3>Python for Everybody Specialization</h3>
+        <p>Coursera (University of Michigan)</p>
+        <p>Comprehensive Python programming fundamentals, data structures, web data, and database skills.</p>
+        <p class="date">Issued: April 2023</p>
+      </div>
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="effective eriting.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="german.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="HTML GREATLERNING.jpg" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="htmlinfosys.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="htmlinfosys.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="pythoninfosys.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="training.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="dfesta.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="hacerrank.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="webdesign.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+
+      <div class="certificate-card">
+        <div class="card-image">
+          <img src="NEXTWAVE.png" alt="Data Science Certificate" />
+        </div>
+        <h3>IBM Data Science Professional Certificate</h3>
+        <p>Coursera (IBM)</p>
+        <p>Developed skills in data science, including Python, SQL, data visualization, machine learning, and deep learning.</p>
+        <p class="date">Issued: July 2024</p>
+      </div>
+  </section>
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; <span id="currentYear">2025</span> PDP. All rights reserved.</p>
+      <p>Designed and Developed with  by <i class="fas fa-crown" style="color: #e7c23c;"></i> Durga Prasad.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dropdown functionality
+      const dropbtn = document.querySelector('.dropbtn');
+      const dropdownContent = document.querySelector('.dropdown-content');
+
+      if (dropbtn && dropdownContent) {
+        dropbtn.addEventListener('click', function(event) {
+          event.stopPropagation(); // Prevent document click from closing immediately
+          dropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+          if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-content')) {
+            if (dropdownContent.classList.contains('show')) {
+              dropdownContent.classList.remove('show');
+            }
+          }
+        });
+      }
+
+      // Intersection Observer for reveal animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      // Observe all sections for reveal animation
+      document.querySelectorAll('.certificates-section').forEach(el => observer.observe(el));
+
+      // Back to Top Button functionality
+      const backToTopButton = document.getElementById('backToTop');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { // Show button after scrolling 300px
+          backToTopButton.style.display = 'block';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      });
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
